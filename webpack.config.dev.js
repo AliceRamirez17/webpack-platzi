@@ -31,7 +31,7 @@ module.exports = {
       {
         // Conectar con babel, archivos module o js
         test: /\.m?js$/,
-        exclude: /node_module/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
@@ -54,7 +54,7 @@ module.exports = {
             mimetype: "application/font-woff",
             name: "[name].[contenthash].[ext]",
             outputPath: "./assets/fonts/",
-            publicPath: "./assets/fonts/",
+            publicPath: "../assets/fonts/",
             esModule: false,
           },
         },
@@ -81,4 +81,10 @@ module.exports = {
     }),
     new DotEnv(),
   ],
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    historyApiFallback: true,
+    port: 3050,
+  },
 };
